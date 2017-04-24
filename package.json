@@ -1,0 +1,35 @@
+{
+  "name": "sails-hook-iceline",
+  "version": "1.0.0",
+  "description": "A hook to extend the functionability of Waterline.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malpercio/sails-hook-iceline.git"
+  },
+  "keywords": [
+    "sails",
+    "hook",
+    "sails-hook",
+    "waterline",
+    "soft-delete",
+    "delete"
+  ],
+  "author": "malpercio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malpercio/sails-hook-iceline/issues"
+  },
+  "homepage": "https://github.com/malpercio/sails-hook-iceline#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "mocha": "^3.2.0",
+    "sails": "^0.12.13"
+  }
+}
