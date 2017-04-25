@@ -10,7 +10,7 @@ module.exports = {
       fields;
     for(attrib of model.attributes){
       if(attrib.isDate){
-        fields.add(attrib);
+        fields.push(attrib);
       }
     }
     return fields;

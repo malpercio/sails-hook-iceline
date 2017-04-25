@@ -1,59 +1,58 @@
 'use strict';
 
 var extend = require("lodash/assignIn");
+var each = require("lodash/forEach");
 
 var methods = [
-  {
-    name: 'softDelete',
-    fx : require('./src/softDelete')
-  }
+  ['softDelete', {softDelete: require('./src/softDelete')}]
 ];
 
 var attributes = [{
-          deletedAt: {
-              type: 'bigint',
-              defaultsTo: null,
-              isDate: true
-          }
+  deletedAt: {
+      type: 'bigint',
+      defaultsTo: null,
+      isDate: true
+  }
 }];
 
 function insertAttributes(models){
   let model,
     attrib;
-  for(model of models){
+  each(models,(model) =>{
     if (!model.attributes.deletedAt) {
-      for(atrib of attributes){
+      for(attrib of attributes){
         extend(model.attributes, attrib);
       }
     }
-  }
+  });
 }
 
 function insertMethods(models){
   let model,
     method;
-  for(model of models){
+  each(models, (model) => {
     if (!model.globalId) {
       for(method of methods){
-        extend(model[method.name], method.fx(model));
+        let object = {};
+        object[method[0]] = method[1][method[0]](model);
+        extend(model, object);
       }
     }
-  }
+  });
 }
 
-module.exports = (sails) => {
-  return {
-    initialize: (sails) => {
-      let standBy = [],
-        models = sails.models;
-      sails.after(['hook:moduleloader:loaded'], () => {
-        insertAttributes(models);
-      });
 
-      (sails.hook.orm)?standBy.add('hook:orm:loaded'):undefined;
-      (sails.hook.pubsub)?standBy.add('hook:pubsub:loaded'):undefined;
+module.exports = (sails) => {
+
+  return {
+    initialize: (done) => {
+      let standBy = ['hook:moduleloader:loaded'],
+        models = sails.models;
+      (sails.hooks.orm)?standBy.push('hook:orm:loaded'):undefined;
+      (sails.hooks.pubsub)?standBy.push('hook:pubsub:loaded'):undefined;
 
       sails.after(standBy, () => {
+        insertAttributes(models)
         insertMethods(models);
         done();
       });

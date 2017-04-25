@@ -1,6 +1,7 @@
 var plain = require("lodash/isPlainObject");
-var {dtoi, itod, _} = require('./lib/dates')
-module.export = (model) => {
+var {dtoi, itod, _} = require('./lib/dates');
+
+module.exports = (model) => {
   return (criteria, cb) => {
     let attrib,
       instance,
