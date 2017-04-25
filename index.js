@@ -2,32 +2,50 @@
 
 var extend = require("lodash/assignIn");
 
-var methods = [];
+var methods = [
+  {
+    name: 'softDelete',
+    fx : require('./src/softDelete')
+  }
+];
 
-var attributes = [];
-
-function insertAttributes(models){
-  let model;
-  for(model of models){
-    if (!model.attributes.deletedAt) {
-      extend(model.attributes, {
+var attributes = [{
           deletedAt: {
               type: 'bigint',
-              defaultsTo: null
+              defaultsTo: null,
+              isDate: true
           }
-      });
+}];
+
+function insertAttributes(models){
+  let model,
+    attrib;
+  for(model of models){
+    if (!model.attributes.deletedAt) {
+      for(atrib of attributes){
+        extend(model.attributes, attrib);
+      }
+    }
   }
 }
 
 function insertMethods(models){
-
+  let model,
+    method;
+  for(model of models){
+    if (!model.globalId) {
+      for(method of methods){
+        extend(model[method.name], method.fx(model));
+      }
+    }
+  }
 }
 
-module.exports = function (sails) {
+module.exports = (sails) => {
   return {
     initialize: (sails) => {
       let standBy = [],
-      let models = sails.models;
+        models = sails.models;
       sails.after(['hook:moduleloader:loaded'], () => {
         insertAttributes(models);
       });
@@ -39,6 +57,7 @@ module.exports = function (sails) {
         insertMethods(models);
         done();
       });
+
     }
   };
 };
