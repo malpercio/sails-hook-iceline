@@ -1,5 +1,4 @@
 [![Stories in Ready](https://badge.waffle.io/malpercio/sails-hook-iceline.png?label=ready&title=Ready)](https://waffle.io/malpercio/sails-hook-iceline)
-[![Build Status](https://travis-ci.org/malpercio/sails-hook-iceline.svg?branch=master)](https://travis-ci.org/malpercio/sails-hook-iceline)
 [![Build Status](https://david-dm.org/malpercio/sails-hook-iceline.svg)](https://travis-ci.org/malpercio/sails-hook-iceline)
 [![DevDependencies](https://david-dm.org/malpercio/sails-hook-iceline/dev-status.svg)](https://david-dm.org/malpercio/sails-hook-iceline)
 [![npm version](https://badge.fury.io/js/sails-hook-iceline.svg)](https://badge.fury.io/js/sails-hook-iceline)

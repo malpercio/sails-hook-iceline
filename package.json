@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A hook to extend the functionability of Waterline.",
   "main": "index.js",
+  "sails": {
+        "isHook": true
+  },
   "scripts": {
     "test": "mocha ./test --recursive"
   },
