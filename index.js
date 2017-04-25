@@ -6,11 +6,20 @@ var methods = [];
 
 var attributes = [];
 
-function insertAttributes(){
-
+function insertAttributes(models){
+  let model;
+  for(model of models){
+    if (!model.attributes.deletedAt) {
+      extend(model.attributes, {
+          deletedAt: {
+              type: 'bigint',
+              defaultsTo: null
+          }
+      });
+  }
 }
 
-function insertMethods(){
+function insertMethods(models){
 
 }
 
