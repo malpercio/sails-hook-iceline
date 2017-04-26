@@ -10,7 +10,7 @@ module.exports = {
   getDateFields:(model) => {
     let fields = [];
     each(model.attributes, (attrib) =>{
-      if(attrib.isDate){
+      if(attrib.type == "integer" && attrib.size == 64){
         fields.push(attrib);
       }
     });

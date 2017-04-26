@@ -5,6 +5,8 @@ var each = require("lodash/forEach");
 
 var methods = [
   ['softDelete', {softDelete: require('./src/softDelete')}],
+  ['findActive', {findActive: require('./src/findActive')}],
+  ['findInactive', {findInactive: require('./src/findInactive')}]
 ];
 
 function insertMethods(models){
