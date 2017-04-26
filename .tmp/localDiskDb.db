@@ -7,6 +7,11 @@
       "id": {
         "type": "string"
       },
+      "deletedAt": {
+        "type": "integer",
+        "defaultsTo": null,
+        "size": 64
+      },
       "createdAt": {
         "type": "datetime"
       },

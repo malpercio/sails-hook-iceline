@@ -4,28 +4,10 @@ var extend = require("lodash/assignIn");
 var each = require("lodash/forEach");
 
 var methods = [
-  ['softDelete', {softDelete: require('./src/softDelete')}]
+  ['softDelete', {softDelete: require('./src/softDelete')}],
+  ['findActive', {findActive: require('./src/findActive')}],
+  ['findInactive', {findInactive: require('./src/findInactive')}]
 ];
-
-var attributes = [{
-  deletedAt: {
-      type: 'bigint',
-      defaultsTo: null,
-      isDate: true
-  }
-}];
-
-function insertAttributes(models){
-  let model,
-    attrib;
-  each(models,(model) =>{
-    if (!model.attributes.deletedAt) {
-      for(attrib of attributes){
-        extend(model.attributes, attrib);
-      }
-    }
-  });
-}
 
 function insertMethods(models){
   let model,
@@ -52,7 +34,6 @@ module.exports = (sails) => {
       (sails.hooks.pubsub)?standBy.push('hook:pubsub:loaded'):undefined;
 
       sails.after(standBy, () => {
-        insertAttributes(models)
         insertMethods(models);
         done();
       });
