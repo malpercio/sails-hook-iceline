@@ -4,7 +4,8 @@
   "description": "A hook to extend the functionability of Waterline.",
   "main": "index.js",
   "sails": {
-        "isHook": true
+        "isHook": true,
+        "hookName": "iceline"
   },
   "scripts": {
     "test": "mocha ./test --recursive"
