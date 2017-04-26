@@ -13,12 +13,10 @@ function insertMethods(models){
   let model,
     method;
   each(models, (model) => {
-    if (!model.globalId) {
-      for(method of methods){
-        let object = {};
-        object[method[0]] = method[1][method[0]](model);
-        extend(model, object);
-      }
+    for(method of methods){
+      let object = {};
+      object[method[0]] = method[1][method[0]](model);
+      extend(model, object);
     }
   });
 }

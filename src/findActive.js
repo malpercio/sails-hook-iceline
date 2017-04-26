@@ -6,6 +6,9 @@ var Query = require('./Query');
 
 module.exports = (model) => {
   return (criteria) =>{
+    if(!criteria){
+      criteria = {};
+    }
     criteria.deletedAt = null;
     return model.find(criteria);
   }
