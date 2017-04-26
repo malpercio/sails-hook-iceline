@@ -29,6 +29,11 @@ module.exports = () => {
                 id: {
                   type: 'number',
                   required: true
+                },
+                deletedAt: {
+                    type: 'integer',
+                    defaultsTo: null,
+                    size: 64,
                 }
               }
             }
