@@ -2,7 +2,7 @@ var Sails = require('sails').Sails;
 
 module.exports = () => {
   let app = new Sails();
-  before(function setup(done){
+  before((done) => {
     app.load({
       globals: false,
       log: { level: 'warn' },
@@ -36,6 +36,12 @@ module.exports = () => {
         }
       }
     },done);
+  });
+
+  after((done) => {
+    app.models.foo.destroy({}).exec(() =>{
+      app.lower(done);
+    });
   });
 
   return app;

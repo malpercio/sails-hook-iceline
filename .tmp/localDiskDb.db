@@ -1,0 +1,21 @@
+{
+  "data": {
+    "foo": []
+  },
+  "schema": {
+    "foo": {
+      "id": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    }
+  },
+  "counters": {
+    "foo": {}
+  }
+}
