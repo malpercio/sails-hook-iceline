@@ -26,13 +26,12 @@ module.exports = (sails) => {
 
   return {
     initialize: (done) => {
-      let standBy = ['hook:moduleloader:loaded'],
-        models = sails.models;
+      let standBy = ['hook:moduleloader:loaded'];
       (sails.hooks.orm)?standBy.push('hook:orm:loaded'):undefined;
       (sails.hooks.pubsub)?standBy.push('hook:pubsub:loaded'):undefined;
 
       sails.after(standBy, () => {
-        insertMethods(models);
+        insertMethods(sails.models);
         done();
       });
 
