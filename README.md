@@ -11,4 +11,4 @@
 Ever wanted a soft delete in [sails](http://sailsjs.org/)? *It's time to make your wishes come true.* It also provides you 
 of the necessary methods to search with ease.
 
-Come and join me on this magical journey to the land of the unknown. Also, you can read the wiki **[here](https://github.com/malpercio/data-holder/wiki/)**.
+Come and join me on this magical journey to the land of the unknown. Also, you can read the wiki **[here](https://github.com/malpercio/sails-hook-iceline/wiki/)**.
